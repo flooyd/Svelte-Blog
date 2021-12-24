@@ -48,4 +48,16 @@
     color: yellow;
     cursor: pointer;
   }
+
+  @media only screen and (max-width: 600px) {
+    .title {
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .nav .options {
+      font-weight: bold;
+      font-size: 16px;
+      display: flex;
+    }
+  }
 </style>
