@@ -40,6 +40,7 @@
     z-index: 5;
     width: 100%;
     justify-content: space-between;
+    user-select: none;
   }
   .title {
     font-weight: bold;
