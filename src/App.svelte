@@ -37,15 +37,12 @@
   :global(body) {
     font-family: "Roboto", Arial, Helvetica, sans-serif;
     background-color: whitesmoke;
+    padding-bottom: 20px;
   }
 
-  main {
-    padding: 0px;
-    height: 100vh;
-    background: whitesmoke;
-  }
   .articles {
-    margin: 20px;
+    margin: 20px 0px;
+
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 600px));
     justify-content: center;

@@ -26,6 +26,7 @@
     border-radius: 2px;
     padding: 10px;
     position: relative;
+    margin: 0px 10px;
     overflow: hidden;
   }
 
@@ -38,7 +39,6 @@
 
   .articleHeader {
     display: flex;
-
     justify-content: space-between;
   }
 
