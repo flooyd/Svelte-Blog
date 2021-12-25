@@ -3,6 +3,13 @@
   import LoginModal from "./LoginModal.svelte";
   import Nav from "./Nav.svelte";
   import { whichModalIsOpen } from "./stores/modal";
+  import { user } from "./stores/user";
+
+  $: console.log($user);
+
+  if (localStorage.getItem("user")) {
+    $user = JSON.parse(localStorage.getItem("user"));
+  }
 </script>
 
 <main>

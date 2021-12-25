@@ -2,10 +2,11 @@
   import ClickOutside from "svelte-click-outside";
   import { whichModalIsOpen } from "./stores/modal";
   import { fade } from "svelte/transition";
-  export let modal;
+
   let initialOpen = true;
 
   const onClickOutside = () => {
+    console.log("hi");
     if (!initialOpen) {
       $whichModalIsOpen = null;
     }

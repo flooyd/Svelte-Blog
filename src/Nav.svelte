@@ -1,8 +1,15 @@
 <script>
   import { whichModalIsOpen } from "./stores/modal";
+  import { user } from "./stores/user";
 
   const handleClickLogin = () => {
     $whichModalIsOpen = "login";
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    $user = null;
+    console.log($user);
   };
 </script>
 
@@ -10,7 +17,13 @@
   <div class="title">Blog Site</div>
   <nav class="options">
     <div class="about">About</div>
-    <div class="navLogin" on:click={handleClickLogin}>Login/Register</div>
+    {#if $user && $user.id}
+      <div on:click={handleLogout}>
+        Logged in as {$user.username}
+      </div>
+    {:else}
+      <div class="navLogin" on:click={handleClickLogin}>Login/Register</div>
+    {/if}
   </nav>
 </div>
 
@@ -34,7 +47,7 @@
   }
   .nav .options {
     font-weight: bold;
-    font-size: 25px;
+    font-size: 20px;
     display: flex;
   }
 
