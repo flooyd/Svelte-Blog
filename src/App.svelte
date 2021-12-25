@@ -40,10 +40,10 @@
 </main>
 
 <style>
-  @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Amatic+SC&family=Josefin+Sans&display=swap");
 
   :global(body) {
-    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    font-family: "Josefin Sans", Arial, Helvetica, sans-serif;
     background-color: whitesmoke;
     padding-bottom: 20px;
   }

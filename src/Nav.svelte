@@ -29,6 +29,7 @@
 
 <style>
   .nav {
+    font-family: "Amatic Sc";
     padding: 0px 20px;
     background: #333;
     height: 60px;
@@ -48,7 +49,7 @@
   }
   .nav .options {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 25px;
     display: flex;
   }
 
