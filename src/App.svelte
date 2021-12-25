@@ -16,6 +16,15 @@
   <Nav />
   <div class="articles">
     <Article />
+    <Article />
+    <Article />
+    <Article />
+    <Article />
+    <Article />
+    <Article />
+    <Article />
+    <Article />
+    <Article />
   </div>
   {#if $whichModalIsOpen === "login"}
     <LoginModal />
