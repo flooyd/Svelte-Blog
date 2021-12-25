@@ -1,10 +1,14 @@
+<script lang="ts">
+  import type { article } from "../util/seed";
+  export let article: article;
+
+  const { id, title, content } = article;
+</script>
+
 <div class="article">
   <div class="articleHeader">
     <div class="articleTitle">
-      Sed enim nunc, semper eu congue ut, hendrerit quis lorem. Praesent tempus
-      arcu quis ex pretium, eget viverra odio tempor. Mauris ut tristique dolor.
-      Cras et eros ornare, fermentum ante in, tincidunt nisi. Class aptent
-      taciti sociosqu ad litora erat curae.
+      {title}
     </div>
     <div class="articleTags">
       <div>Neat</div>

@@ -1,21 +1,33 @@
 <script lang="ts">
-  import LoginModal from "./LoginModal.svelte";
-  import Nav from "./Nav.svelte";
+  import LoginModal from "./features/LoginModal.svelte";
+  import Nav from "./features/Nav.svelte";
   import { whichModalIsOpen } from "./stores/modal";
   import { user } from "./stores/user";
-  import Dashboard from "./Dashboard.svelte";
-  import Footer from "./Footer.svelte";
-
-  $: console.log($user);
+  import Dashboard from "./screens/Dashboard.svelte";
+  import Footer from "./features/Footer.svelte";
+  import { seedArticles, article } from "./util/seed";
+  import { userArticles } from "./stores/articles";
 
   if (localStorage.getItem("user")) {
     $user = JSON.parse(localStorage.getItem("user"));
   }
+
+  $: if ($user) {
+    $userArticles = seedArticles;
+  }
+
+  $: if (!$user) {
+    $userArticles = [];
+  }
+
+  $: console.log($user);
 </script>
 
 <main>
   <Nav />
-  <Dashboard />
+  {#if $user}
+    <Dashboard />
+  {/if}
   <Footer />
   {#if $whichModalIsOpen === "login"}
     <LoginModal />

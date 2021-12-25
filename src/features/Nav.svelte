@@ -1,6 +1,6 @@
 <script>
-  import { whichModalIsOpen } from "./stores/modal";
-  import { user } from "./stores/user";
+  import { whichModalIsOpen } from "../stores/modal";
+  import { user } from "../stores/user";
 
   const handleClickLogin = () => {
     $whichModalIsOpen = "login";
@@ -36,7 +36,7 @@
     color: white;
     display: flex;
     align-items: center;
-    position: sticky;
+    position: fixed;
     top: 0px;
     z-index: 5;
     width: 100%;

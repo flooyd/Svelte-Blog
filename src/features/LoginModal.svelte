@@ -1,7 +1,7 @@
 <script>
-  import SideModal from "./SideModal.svelte";
-  import { whichModalIsOpen } from "./stores/modal";
-  import { user } from "./stores/user";
+  import SideModal from "../components/SideModal.svelte";
+  import { whichModalIsOpen } from "../stores/modal";
+  import { user } from "../stores/user";
 
   let username, email, password;
 
