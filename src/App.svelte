@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Article from "./Article.svelte";
+  import ArticleCard from "./ArticleCard.svelte";
   import LoginModal from "./LoginModal.svelte";
   import Nav from "./Nav.svelte";
   import { whichModalIsOpen } from "./stores/modal";
@@ -15,16 +15,16 @@
 <main>
   <Nav />
   <div class="articles">
-    <Article />
-    <Article />
-    <Article />
-    <Article />
-    <Article />
-    <Article />
-    <Article />
-    <Article />
-    <Article />
-    <Article />
+    <ArticleCard />
+    <ArticleCard />
+    <ArticleCard />
+    <ArticleCard />
+    <ArticleCard />
+    <ArticleCard />
+    <ArticleCard />
+    <ArticleCard />
+    <ArticleCard />
+    <ArticleCard />
   </div>
   {#if $whichModalIsOpen === "login"}
     <LoginModal />
@@ -42,7 +42,6 @@
 
   .articles {
     margin: 20px 0px;
-
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 600px));
     justify-content: center;
