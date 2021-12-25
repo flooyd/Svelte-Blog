@@ -35,7 +35,7 @@
     color: white;
     display: flex;
     align-items: center;
-    position: sticky;
+    position: fixed;
     top: 0px;
     z-index: 5;
     width: 100%;
