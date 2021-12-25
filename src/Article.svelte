@@ -27,7 +27,7 @@
     padding: 10px;
     position: relative;
     margin: 0px 10px;
-    overflow: hidden;
+    overflow-y: auto;
   }
 
   .articleFooter {
