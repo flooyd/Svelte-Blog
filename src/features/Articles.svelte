@@ -1,21 +1,18 @@
-<script lang="ts">
-  import { onDestroy } from "svelte";
-
-  import { fade } from "svelte/transition";
-  import App from "../App.svelte";
-  import ArticleCard from "../features/ArticleCard.svelte";
-  import Toolbar from "../features/Toolbar.svelte";
+<script>
   import { userArticles } from "../stores/articles";
+  import ArticleCard from "./ArticleCard.svelte";
+  import { currentScreen } from "../stores/screen";
+
+  export let view = "grid";
 </script>
 
-<div class="dashboard">
-  <Toolbar />
+{#if view === "grid" && $currentScreen === "userArticles"}
   <div class="articles">
     {#each $userArticles as article (article.id)}
-      <ArticleCard article={{ ...article }} />
+      <ArticleCard article={{ ...article, fromWhichScreen: $currentScreen }} />
     {/each}
   </div>
-</div>
+{/if}
 
 <style>
   .articles {

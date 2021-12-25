@@ -1,6 +1,7 @@
 <script>
   import SideModal from "../components/SideModal.svelte";
   import { whichModalIsOpen } from "../stores/modal";
+  import { currentScreen } from "../stores/screen";
   import { user } from "../stores/user";
 
   let username, email, password;
@@ -55,6 +56,7 @@
     } else {
       $user = data.user;
       $whichModalIsOpen = null;
+      $currentScreen = "userArticles";
       storeUser($user);
     }
     disabled = false;
@@ -80,6 +82,7 @@
     } else {
       $user = data.user;
       $whichModalIsOpen = null;
+      $currentScreen = "userArticles";
       storeUser($user);
     }
     disabled = false;
