@@ -29,6 +29,7 @@
   {#if $whichModalIsOpen === "login"}
     <LoginModal />
   {/if}
+  <div class="footer">Created with ❤️ by Floyd Jones</div>
 </main>
 
 <style>
@@ -46,5 +47,16 @@
     grid-template-columns: repeat(auto-fill, minmax(350px, 600px));
     justify-content: center;
     grid-gap: 20px;
+  }
+
+  .footer {
+    position: fixed;
+    background: #333;
+    color: white;
+    width: 100%;
+    bottom: 0px;
+    text-align: right;
+    padding: 10px;
+    padding-right: 20px;
   }
 </style>
