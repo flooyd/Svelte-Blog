@@ -8,6 +8,9 @@
   let login = true;
   let errors = [];
   let disabled = false;
+  const baseUrl = window.location.href.includes("local")
+    ? "http://localhost:3000"
+    : "https://blog-in-a-nest.herokuapp.com";
 
   const handleChangeLoginRegister = (e, loginOrRegister) => {
     e.stopPropagation();
@@ -33,7 +36,7 @@
   };
 
   const registerUser = async () => {
-    const response = await fetch("http://localhost:3000/users", {
+    const response = await fetch(`${baseUrl}/users`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -58,7 +61,7 @@
   };
 
   const loginUser = async () => {
-    const response = await fetch("http://localhost:3000/login", {
+    const response = await fetch(`${baseUrl}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
