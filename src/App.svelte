@@ -4,6 +4,8 @@
   import Nav from "./Nav.svelte";
   import { whichModalIsOpen } from "./stores/modal";
   import { user } from "./stores/user";
+  import Fa from "svelte-fa";
+  import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
   $: console.log($user);
 
@@ -29,7 +31,12 @@
   {#if $whichModalIsOpen === "login"}
     <LoginModal />
   {/if}
-  <div class="footer">Created with ❤️ by Floyd Jones</div>
+  <div class="footer">
+    <div>Created with ❤️ by Floyd Jones</div>
+    <a target="__blank" href="https://github.com/flooyd/svelte-blog"
+      ><Fa icon={faGithub} /></a
+    >
+  </div>
 </main>
 
 <style>
@@ -58,5 +65,12 @@
     text-align: right;
     padding: 10px;
     padding-right: 20px;
+  }
+
+  .footer a,
+  .footer div {
+    color: white;
+    display: inline-block;
+    margin-left: 13px;
   }
 </style>
