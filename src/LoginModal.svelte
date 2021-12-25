@@ -182,6 +182,11 @@
     width: 100px;
   }
 
+  .login form button:hover {
+    background: #333;
+    color: whitesmoke;
+  }
+
   .errors {
     font-style: italic;
     margin-top: 10px;
