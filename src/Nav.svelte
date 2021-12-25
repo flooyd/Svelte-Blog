@@ -14,7 +14,7 @@
 </script>
 
 <div class="nav">
-  <div class="title">Blog Site</div>
+  <div class="title">Nest Blog</div>
   <nav class="options">
     <div class="about">About</div>
     {#if $user && $user.id}

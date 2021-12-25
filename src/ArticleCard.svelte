@@ -66,6 +66,11 @@
     margin-right: 13px;
   }
 
+  .articleTitle:hover {
+    font-weight: bold;
+    cursor: pointer;
+  }
+
   @media only screen and (max-width: 600px) {
     .articleTitle {
       font-size: 13px;
