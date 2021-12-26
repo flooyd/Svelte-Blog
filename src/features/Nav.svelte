@@ -20,7 +20,7 @@
   <div class="title" on:click={handleClickHome}>Nest Blog</div>
   <nav class="options">
     <div class="about">About</div>
-    {#if $user && $user.id}
+    {#if $user}
       <div on:click={handleClickUser}>
         Logged in as {$user.username}
       </div>

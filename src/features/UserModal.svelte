@@ -7,10 +7,10 @@
   import { user } from "../stores/user";
 
   const handleLogout = async () => {
-    $whichModalIsOpen = null;
     localStorage.removeItem("user");
+    $user = false;
+    $whichModalIsOpen = null;
     await tick();
-    $user = null;
   };
 
   const handleClickView = () => {
@@ -19,17 +19,15 @@
   };
 </script>
 
-{#if $user}
-  <SideModal>
-    <div class="userModal">
-      <div>
-        Hello, {$user.username}. Hopefully you are having a good day. :D
-      </div>
-      <div><button on:click={handleClickView}>View my Articles</button></div>
-      <div><button class="logout" on:click={handleLogout}>Logout</button></div>
+<SideModal>
+  <div class="userModal">
+    <div>
+      Hello, {$user.username}. Hopefully you are having a good day. :D
     </div>
-  </SideModal>
-{/if}
+    <div><button on:click={handleClickView}>View my Articles</button></div>
+    <div><button class="logout" on:click={handleLogout}>Logout</button></div>
+  </div>
+</SideModal>
 
 <style>
   .userModal {
