@@ -1,12 +1,15 @@
 <script>
+  import { tick } from "svelte";
+
   import SideModal from "../components/SideModal.svelte";
   import { whichModalIsOpen } from "../stores/modal";
   import { currentScreen } from "../stores/screen";
   import { user } from "../stores/user";
 
-  const handleLogout = () => {
-    localStorage.removeItem("user");
+  const handleLogout = async () => {
     $whichModalIsOpen = null;
+    localStorage.removeItem("user");
+    await tick();
     $user = null;
   };
 
@@ -16,13 +19,17 @@
   };
 </script>
 
-<SideModal>
-  <div class="userModal">
-    <div>Hello, {$user.username}. Hopefully you are having a good day. :D</div>
-    <div><button on:click={handleClickView}>View my Articles</button></div>
-    <div><button class="logout" on:click={handleLogout}>Logout</button></div>
-  </div>
-</SideModal>
+{#if $user}
+  <SideModal>
+    <div class="userModal">
+      <div>
+        Hello, {$user.username}. Hopefully you are having a good day. :D
+      </div>
+      <div><button on:click={handleClickView}>View my Articles</button></div>
+      <div><button class="logout" on:click={handleLogout}>Logout</button></div>
+    </div>
+  </SideModal>
+{/if}
 
 <style>
   .userModal {

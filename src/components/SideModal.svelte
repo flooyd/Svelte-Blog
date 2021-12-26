@@ -6,7 +6,6 @@
   let initialOpen = true;
 
   const onClickOutside = () => {
-    console.log("hi");
     if (!initialOpen) {
       $whichModalIsOpen = null;
     }

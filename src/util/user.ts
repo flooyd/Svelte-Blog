@@ -9,6 +9,5 @@ export const getOwnArticles = async (token): Promise<any> => {
   });
 
   const data = await response.json();
-  console.log(data);
   return data;
 };

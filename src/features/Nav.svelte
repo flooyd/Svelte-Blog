@@ -1,5 +1,6 @@
 <script>
   import { whichModalIsOpen } from "../stores/modal";
+  import { currentScreen } from "../stores/screen";
   import { user } from "../stores/user";
 
   const handleClickLogin = () => {
@@ -9,10 +10,14 @@
   const handleClickUser = () => {
     $whichModalIsOpen = "user";
   };
+
+  const handleClickHome = () => {
+    $currentScreen = "home";
+  };
 </script>
 
 <div class="nav">
-  <div class="title">Nest Blog</div>
+  <div class="title" on:click={handleClickHome}>Nest Blog</div>
   <nav class="options">
     <div class="about">About</div>
     {#if $user && $user.id}

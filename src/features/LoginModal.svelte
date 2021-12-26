@@ -1,6 +1,7 @@
 <script>
   import SideModal from "../components/SideModal.svelte";
   import { whichModalIsOpen } from "../stores/modal";
+  import { currentScreen } from "../stores/screen";
   import { user } from "../stores/user";
   import { baseUrl } from "../util/index";
 
@@ -52,7 +53,7 @@
       handleErrors(data);
     } else {
       $user = data.user;
-      $whichModalIsOpen = null;
+      $whichModalIsOpen = "user";
       storeUser($user);
     }
     disabled = false;
@@ -77,7 +78,7 @@
       handleErrors(data);
     } else {
       $user = data.user;
-      $whichModalIsOpen = null;
+      $whichModalIsOpen = "user";
       storeUser($user);
     }
     disabled = false;
@@ -88,7 +89,6 @@
   };
 
   const handleErrors = (data) => {
-    console.log(data);
     if (data.statusCode === 422 && login) {
       errors = [data.message];
     } else if (data.statusCode === 400) {
