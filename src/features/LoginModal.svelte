@@ -93,7 +93,7 @@
 
   const handleErrors = (data) => {
     if (data.statusCode === 422 && login) {
-      errors = [data.message];
+      errors = [data.message, "Username and Password are case sensitive."];
     } else if (data.statusCode === 400) {
       errors = data.message.map((error) => error);
     } else if (data.statusCode === 422 && !login) {
@@ -157,7 +157,6 @@
     background: lightblue;
     color: black;
     padding: 10px;
-    text-align: center;
   }
 
   .login .header {
@@ -178,7 +177,6 @@
 
   .login form button {
     display: block;
-    margin: 0 auto;
     margin-top: 2px;
     width: 100px;
   }

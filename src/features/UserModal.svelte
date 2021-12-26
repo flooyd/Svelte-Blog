@@ -21,6 +21,7 @@
 
 <SideModal>
   <div class="userModal">
+    <div class="title">{$user.username}'s Profile</div>
     <div>
       Hello, {$user.username}. Hopefully you are having a good day. :D
     </div>
@@ -34,7 +35,11 @@
     background: lightblue;
     color: black;
     padding: 10px;
-    text-align: center;
+  }
+
+  .userModal .title {
+    font-size: 20px;
+    font-weight: bold;
   }
 
   .userModal div {
