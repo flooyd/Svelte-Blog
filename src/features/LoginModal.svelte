@@ -56,7 +56,6 @@
     } else {
       $user = data.user;
       $whichModalIsOpen = null;
-      $currentScreen = "userArticles";
       storeUser($user);
     }
     disabled = false;
@@ -82,7 +81,6 @@
     } else {
       $user = data.user;
       $whichModalIsOpen = null;
-      $currentScreen = "userArticles";
       storeUser($user);
     }
     disabled = false;
