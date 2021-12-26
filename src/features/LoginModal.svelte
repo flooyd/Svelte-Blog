@@ -1,17 +1,14 @@
 <script>
   import SideModal from "../components/SideModal.svelte";
   import { whichModalIsOpen } from "../stores/modal";
-  import { currentScreen } from "../stores/screen";
   import { user } from "../stores/user";
+  import { baseUrl } from "../util/index";
 
   let username, email, password;
 
   let login = true;
   let errors = [];
   let disabled = false;
-  const baseUrl = window.location.href.includes("local")
-    ? "http://localhost:3000"
-    : "https://blog-in-a-nest.herokuapp.com";
 
   const handleChangeLoginRegister = (e, loginOrRegister) => {
     e.stopPropagation();

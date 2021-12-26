@@ -6,10 +6,8 @@
     $whichModalIsOpen = "login";
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    $user = null;
-    console.log($user);
+  const handleClickUser = () => {
+    $whichModalIsOpen = "user";
   };
 </script>
 
@@ -18,7 +16,7 @@
   <nav class="options">
     <div class="about">About</div>
     {#if $user && $user.id}
-      <div on:click={handleLogout}>
+      <div on:click={handleClickUser}>
         Logged in as {$user.username}
       </div>
     {:else}

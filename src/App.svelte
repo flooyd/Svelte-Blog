@@ -6,20 +6,28 @@
   import Dashboard from "./screens/UserArticles.svelte";
   import Footer from "./features/Footer.svelte";
   import { seedArticles, article } from "./util/seed";
-  import { userArticles } from "./stores/articles";
+  import { userArticles, userArticlesCount } from "./stores/articles";
   import { currentScreen } from "./stores/screen";
+  import { getOwnArticles } from "./util/user";
+  import UserModal from "./features/UserModal.svelte";
 
   if (localStorage.getItem("user")) {
     $user = JSON.parse(localStorage.getItem("user"));
   }
 
   $: if ($user) {
-    $userArticles = seedArticles;
+    getArticles();
   }
 
   $: if (!$user) {
     $userArticles = [];
   }
+
+  const getArticles = async () => {
+    const userArticlesResponse = await getOwnArticles($user.token);
+    $userArticles = userArticlesResponse.articles;
+    $userArticlesCount = userArticlesResponse.count;
+  };
 </script>
 
 <main>
@@ -31,6 +39,9 @@
   <Footer />
   {#if $whichModalIsOpen === "login"}
     <LoginModal />
+  {/if}
+  {#if $whichModalIsOpen === "user"}
+    <UserModal />
   {/if}
 </main>
 
