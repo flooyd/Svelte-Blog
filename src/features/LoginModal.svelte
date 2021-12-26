@@ -1,7 +1,6 @@
 <script>
   import SideModal from "../components/SideModal.svelte";
-  import { whichModalIsOpen } from "../stores/modal";
-  import { currentScreen } from "../stores/screen";
+  import { openedBySystem, whichModalIsOpen } from "../stores/modal";
   import { user } from "../stores/user";
   import { baseUrl } from "../util/index";
 
@@ -53,8 +52,10 @@
       handleErrors(data);
     } else {
       $user = data.user;
-      $whichModalIsOpen = "user";
+      $whichModalIsOpen = null;
       storeUser($user);
+      $whichModalIsOpen = "user";
+      $openedBySystem = true;
     }
     disabled = false;
   };
@@ -78,8 +79,10 @@
       handleErrors(data);
     } else {
       $user = data.user;
-      $whichModalIsOpen = "user";
+      $whichModalIsOpen = null;
       storeUser($user);
+      $whichModalIsOpen = "user";
+      $openedBySystem = true;
     }
     disabled = false;
   };

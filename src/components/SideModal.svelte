@@ -1,9 +1,14 @@
 <script>
   import ClickOutside from "svelte-click-outside";
-  import { whichModalIsOpen } from "../stores/modal";
+  import { openedBySystem, whichModalIsOpen } from "../stores/modal";
   import { fade } from "svelte/transition";
 
   let initialOpen = true;
+
+  $: if ($openedBySystem) {
+    initialOpen = false;
+    $openedBySystem = false;
+  }
 
   const onClickOutside = () => {
     if (!initialOpen) {
