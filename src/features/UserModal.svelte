@@ -6,8 +6,8 @@
 
   const handleLogout = () => {
     localStorage.removeItem("user");
-    $user = null;
     $whichModalIsOpen = null;
+    $user = null;
   };
 
   const handleClickView = () => {
