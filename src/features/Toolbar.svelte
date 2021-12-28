@@ -1,9 +1,9 @@
 <script>
-  import { user } from "../stores/user";
+  export let user;
 </script>
 
 <div class="toolbar">
-  <div class="title">{$user.username}'s Articles</div>
+  <div class="title">{user.username}'s Articles</div>
 </div>
 
 <style>
@@ -14,5 +14,6 @@
 
   .title {
     font-size: 20px;
+    font-weight: bold;
   }
 </style>

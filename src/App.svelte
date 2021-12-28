@@ -10,6 +10,7 @@
   import { currentScreen } from "./stores/screen";
   import { getOwnArticles } from "./util/user";
   import UserModal from "./features/UserModal.svelte";
+  import ArticleModal from "./features/ArticleModal.svelte";
 
   if (localStorage.getItem("user")) {
     $user = JSON.parse(localStorage.getItem("user"));
@@ -43,6 +44,7 @@
   {#if $whichModalIsOpen === "user"}
     <UserModal />
   {/if}
+  <ArticleModal />
 </main>
 
 <style>
