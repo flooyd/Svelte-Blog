@@ -3,14 +3,14 @@
   import Nav from "./features/Nav.svelte";
   import { whichModalIsOpen } from "./stores/modal";
   import { user } from "./stores/user";
-  import Dashboard from "./screens/UserArticles.svelte";
   import Footer from "./features/Footer.svelte";
-  import { seedArticles, article } from "./util/seed";
   import { userArticles, userArticlesCount } from "./stores/articles";
   import { currentScreen } from "./stores/screen";
   import { getOwnArticles } from "./util/user";
   import UserModal from "./features/UserModal.svelte";
   import ArticleModal from "./features/ArticleModal.svelte";
+  import UserArticles from "./screens/UserArticles.svelte";
+  import ArticleDraft from "./screens/ArticleDraft.svelte";
 
   if (localStorage.getItem("user")) {
     $user = JSON.parse(localStorage.getItem("user"));
@@ -35,7 +35,7 @@
   <Nav />
   <div class="clickOutside" />
   {#if $user && $currentScreen === "userArticles"}
-    <Dashboard />
+    <UserArticles />
   {/if}
   <Footer />
   {#if $whichModalIsOpen === "login"}
@@ -44,7 +44,12 @@
   {#if $whichModalIsOpen === "user"}
     <UserModal />
   {/if}
-  <ArticleModal />
+  {#if $whichModalIsOpen === "articleEditor"}
+    <ArticleModal />
+  {/if}
+  {#if $currentScreen === "articleDraft"}
+    <ArticleDraft />
+  {/if}
 </main>
 
 <style>

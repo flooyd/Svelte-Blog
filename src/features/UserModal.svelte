@@ -1,6 +1,4 @@
 <script>
-  import { tick } from "svelte";
-
   import SideModal from "../components/SideModal.svelte";
   import { whichModalIsOpen } from "../stores/modal";
   import { currentScreen } from "../stores/screen";
@@ -10,10 +8,11 @@
     localStorage.removeItem("user");
     $user = false;
     $whichModalIsOpen = null;
-    await tick();
+    $currentScreen = "logout";
   };
 
   const handleClickView = () => {
+    console.log("hi");
     $currentScreen = "userArticles";
     $whichModalIsOpen = null;
   };
@@ -23,7 +22,7 @@
   <div class="userModal">
     <div class="title">{$user.username}'s Profile</div>
     <div>
-      Hello, {$user.username}. Hopefully you are having a good day. :D
+      Hello, {$user.username}. 😊
     </div>
     <div><button on:click={handleClickView}>View my Articles</button></div>
     <div><button class="logout" on:click={handleLogout}>Logout</button></div>

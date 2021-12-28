@@ -2,7 +2,7 @@
   import SideModal from "../components/SideModal.svelte";
   import Quill from "quill";
   import { onMount } from "svelte";
-  import { articleValue } from "../stores/article";
+  import { articleTitleValue, articleValue } from "../stores/article";
 
   let quill;
 
@@ -33,7 +33,7 @@
     <div class="title">Article Editor</div>
     <div>
       <label for="articleTitle">Title</label>
-      <input name="articleTitle" />
+      <input name="articleTitle" bind:value={$articleTitleValue} />
     </div>
     <div>
       <label for="articleContent">Content (highlight text to format!)</label>
@@ -41,9 +41,6 @@
     </div>
   </div>
 </SideModal>
-<svelte:head>
-  <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet" />
-</svelte:head>
 
 <style>
   .articleModal {

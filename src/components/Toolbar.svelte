@@ -1,15 +1,19 @@
 <script>
-  export let user;
+  export let title;
 </script>
 
 <div class="toolbar">
-  <div class="title">{user.username}'s Articles</div>
+  <div class="title">{title}</div>
+  <slot />
 </div>
 
 <style>
   .toolbar {
     margin: 0px 20px;
     margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .title {

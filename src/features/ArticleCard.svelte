@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { article } from "../util/seed";
+  import type { article } from "../util/types";
   export let article: article;
 
   const { id, title, content } = article;
