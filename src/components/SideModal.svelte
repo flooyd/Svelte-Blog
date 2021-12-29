@@ -33,5 +33,6 @@
     height: calc(100vh - 81px);
     border-left: 4px solid #333;
     box-shadow: 5px 5px 5px 2px rgba(51, 51, 51, 0.25);
+    overflow-y: scroll;
   }
 </style>

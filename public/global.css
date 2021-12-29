@@ -5,7 +5,6 @@
 
 html {
   height: 100vh;
-  background: whitesmoke;
 }
 
 body {
@@ -66,4 +65,14 @@ button:not(:disabled):active {
 
 button:focus {
   border-color: #666;
+}
+
+.ql-syntax {
+  color: white;
+  background: #333;
+  width: fit-content;
+}
+
+#res {
+  white-space: pre;
 }

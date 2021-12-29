@@ -7,20 +7,21 @@
   let quill;
 
   onMount(() => {
-    let container = document.getElementById("editor");
-    quill = new Quill(container, {
-      module: {
+    var quill = new Quill("#editor", {
+      modules: {
         toolbar: [
-          [{ header: [1, 2, 3, false] }],
-          ["bold", "italic", "underline", "strike"],
-          ["link", "code-block"],
+          [{ header: [1, 2, false] }],
+          ["bold", "italic", "underline"],
+          ["image", "code-block"],
         ],
       },
-      placeholder: "Type something...anything :D",
+      placeholder: "Compose an epic...",
       theme: "bubble",
     });
 
-    quill.on("text-change", (delta) => {
+    quill.root.innerHTML = $articleValue;
+
+    quill.on("text-change", () => {
       $articleValue = quill.root.innerHTML;
     });
   });
@@ -39,6 +40,11 @@
       <label for="articleContent">Content (highlight text to format!)</label>
       <div id="editor" name="articleContent" />
     </div>
+    <div>
+      <button>Save Draft</button>
+      <button>Publish Article - Private</button>
+      <button>Publish Article - Public</button>
+    </div>
   </div>
 </SideModal>
 
@@ -56,5 +62,14 @@
   }
   #editor {
     background: white;
+  }
+  button {
+    display: block;
+  }
+
+  button:hover {
+    color: white;
+    background: #333;
+    cursor: pointer;
   }
 </style>

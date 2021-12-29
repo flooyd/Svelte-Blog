@@ -16,6 +16,11 @@
     $currentScreen = "userArticles";
     $whichModalIsOpen = null;
   };
+
+  const handleClickCreate = () => {
+    $currentScreen = "articleDraft";
+    $whichModalIsOpen = "articleEditor";
+  };
 </script>
 
 <SideModal>
@@ -24,8 +29,11 @@
     <div>
       Hello, {$user.username}. 😊
     </div>
-    <div><button on:click={handleClickView}>View my Articles</button></div>
-    <div><button class="logout" on:click={handleLogout}>Logout</button></div>
+    <div>
+      <button on:click={handleClickView}>View my Articles</button>
+      <button on:click={handleClickCreate}>Create new Article</button>
+      <button class="logout" on:click={handleLogout}>Logout</button>
+    </div>
   </div>
 </SideModal>
 
@@ -46,24 +54,15 @@
   }
 
   button {
-    background: #333;
-    color: white;
     border: none;
+    background: white;
+    color: black;
     cursor: pointer;
+    display: block;
   }
 
   button:hover {
-    color: yellow;
-  }
-
-  .logout {
-    width: 133.48px;
-    background: white;
-    color: black;
-  }
-
-  .logout:hover {
-    background: #333;
     color: white;
+    background: #333;
   }
 </style>
