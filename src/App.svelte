@@ -29,27 +29,36 @@
     $userArticles = userArticlesResponse.articles;
     $userArticlesCount = userArticlesResponse.count;
   };
+  let containerWidthConstraint = false;
+  $: if (!$whichModalIsOpen) {
+    containerWidthConstraint = false;
+  } else {
+    containerWidthConstraint = true;
+  }
+  $: console.log(containerWidthConstraint);
 </script>
 
 <main>
   <Nav />
   <div class="clickOutside" />
-  {#if $user && $currentScreen === "userArticles"}
-    <UserArticles />
-  {/if}
-  <Footer />
-  {#if $whichModalIsOpen === "login"}
-    <LoginModal />
-  {/if}
-  {#if $whichModalIsOpen === "user"}
-    <UserModal />
-  {/if}
-  {#if $whichModalIsOpen === "articleEditor"}
-    <ArticleModal />
-  {/if}
-  {#if $currentScreen === "articleDraft"}
-    <ArticleDraft />
-  {/if}
+  <div class={containerWidthConstraint ? "container" : ""}>
+    {#if $user && $currentScreen === "userArticles"}
+      <UserArticles />
+    {/if}
+    <Footer />
+    {#if $whichModalIsOpen === "login"}
+      <LoginModal />
+    {/if}
+    {#if $whichModalIsOpen === "user"}
+      <UserModal />
+    {/if}
+    {#if $whichModalIsOpen === "articleEditor"}
+      <ArticleModal />
+    {/if}
+    {#if $currentScreen === "articleDraft"}
+      <ArticleDraft />
+    {/if}
+  </div>
 </main>
 
 <style>
@@ -66,5 +75,9 @@
     position: absolute;
     height: 100vh;
     width: calc(100vw - 300px);
+  }
+
+  .container {
+    width: calc(100vw - 400px);
   }
 </style>
