@@ -11,6 +11,7 @@
   import ArticleModal from "./features/ArticleModal.svelte";
   import UserArticles from "./screens/UserArticles.svelte";
   import ArticleDraft from "./screens/ArticleDraft.svelte";
+  import ArticleViewer from "./screens/ArticleViewer.svelte";
 
   if (localStorage.getItem("user")) {
     $user = JSON.parse(localStorage.getItem("user"));
@@ -57,6 +58,9 @@
     {/if}
     {#if $currentScreen === "articleDraft"}
       <ArticleDraft />
+    {/if}
+    {#if $currentScreen === "articleViewer"}
+      <ArticleViewer />
     {/if}
   </div>
 </main>

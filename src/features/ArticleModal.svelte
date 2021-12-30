@@ -9,6 +9,8 @@
   } from "../stores/article";
   import { createArticle } from "../util/articles";
   import { user } from "../stores/user";
+  import { whichModalIsOpen } from "../stores/modal";
+  import { currentScreen } from "../stores/screen";
 
   let quill;
 
@@ -40,7 +42,8 @@
       type: visibility,
     });
 
-    console.log(createdArticle);
+    $whichModalIsOpen = null;
+    $currentScreen = "home";
   };
 </script>
 

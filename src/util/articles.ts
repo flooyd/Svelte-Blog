@@ -14,3 +14,9 @@ export const createArticle = async (token, body) => {
   const data = await response.json();
   return data;
 };
+
+export const getArticle = async (articleId) => {
+  const response = await fetch(`${baseUrl}/articles/${articleId}`);
+  const data = await response.json();
+  return data;
+};
