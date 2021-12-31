@@ -3,6 +3,8 @@
   import { whichModalIsOpen } from "../stores/modal";
   import { currentScreen } from "../stores/screen";
   import { user } from "../stores/user";
+  import { userArticles, userArticlesCount } from "../stores/articles";
+  import { getOwnArticles } from "../util/user";
 
   const handleLogout = async () => {
     localStorage.removeItem("user");
@@ -11,10 +13,13 @@
     $currentScreen = "logout";
   };
 
-  const handleClickView = () => {
+  const handleClickView = async () => {
     console.log("hi");
     $currentScreen = "userArticles";
     $whichModalIsOpen = null;
+    const userArticlesResponse = await getOwnArticles($user.token);
+    $userArticles = userArticlesResponse.articles;
+    $userArticlesCount = userArticlesResponse.count;
   };
 
   const handleClickCreate = () => {
