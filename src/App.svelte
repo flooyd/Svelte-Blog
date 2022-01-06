@@ -81,7 +81,7 @@
     {#if $currentScreen === "articleDraft"}
       <ArticleDraft />
     {/if}
-    {#if $currentScreen.includes("articles/") || $currentScreen === "articleViewer"}
+    {#if $currentScreen.includes("articles/")}
       <ArticleViewer />
     {/if}
   </div>
