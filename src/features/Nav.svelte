@@ -1,7 +1,8 @@
-<script>
+<script lang="ts">
   import { whichModalIsOpen } from "../stores/modal";
-  import { currentScreen } from "../stores/screen";
+  import { currentScreen, history } from "../stores/screen";
   import { user } from "../stores/user";
+  import { setScreenAndUpdateHistory } from "../util";
 
   const handleClickLogin = () => {
     $whichModalIsOpen = "login";
@@ -12,7 +13,16 @@
   };
 
   const handleClickHome = () => {
-    $currentScreen = "home";
+    let newHistory = setScreenAndUpdateHistory(
+      $currentScreen,
+      $history,
+      "home"
+    );
+    if (newHistory) {
+      $currentScreen = newHistory[0];
+      $history = newHistory[1];
+      window.history.pushState("", "", "/home");
+    }
   };
 </script>
 

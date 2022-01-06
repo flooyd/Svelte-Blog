@@ -5,13 +5,36 @@
   import { user } from "./stores/user";
   import Footer from "./features/Footer.svelte";
   import { userArticles, userArticlesCount } from "./stores/articles";
-  import { currentScreen } from "./stores/screen";
+  import { currentScreen, history } from "./stores/screen";
   import { getOwnArticles } from "./util/user";
   import UserModal from "./features/UserModal.svelte";
   import ArticleModal from "./features/ArticleModal.svelte";
   import UserArticles from "./screens/UserArticles.svelte";
   import ArticleDraft from "./screens/ArticleDraft.svelte";
   import ArticleViewer from "./screens/ArticleViewer.svelte";
+  import { onMount } from "svelte";
+  import { navigateOnLanding, setScreenAndUpdateHistory } from "./util";
+
+  onMount(() => {
+    let screenToNavigateTo = navigateOnLanding();
+    if (screenToNavigateTo) {
+      console.log("hello");
+      let newHistory = setScreenAndUpdateHistory(
+        $currentScreen,
+        $history,
+        screenToNavigateTo
+      );
+      if (newHistory) {
+        $currentScreen = newHistory[0];
+        $history = newHistory[1];
+        window.history.pushState("", "", screenToNavigateTo);
+      }
+    } else {
+      window.history.pushState("", "", "/");
+    }
+  });
+
+  $: console.log($history, $currentScreen);
 
   if (localStorage.getItem("user")) {
     $user = JSON.parse(localStorage.getItem("user"));
@@ -42,7 +65,7 @@
   <Nav />
   <div class="clickOutside" />
   <div class={containerWidthConstraint ? "container" : ""}>
-    {#if $user && $currentScreen === "userArticles"}
+    {#if $user && $currentScreen === "/userArticles"}
       <UserArticles />
     {/if}
     <Footer />
@@ -58,7 +81,7 @@
     {#if $currentScreen === "articleDraft"}
       <ArticleDraft />
     {/if}
-    {#if $currentScreen === "articleViewer"}
+    {#if $currentScreen.includes("articles/") || $currentScreen === "articleViewer"}
       <ArticleViewer />
     {/if}
   </div>

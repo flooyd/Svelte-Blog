@@ -6,7 +6,7 @@
   export let view = "grid";
 </script>
 
-{#if view === "grid" && $currentScreen === "userArticles"}
+{#if view === "grid" && $currentScreen === "/userArticles"}
   {#if $userArticles.length === 0}
     <div class="noArticles">
       It looks like you haven't created an Article yet. You should do that. 😊

@@ -1,10 +1,12 @@
 <script>
   import SideModal from "../components/SideModal.svelte";
   import { whichModalIsOpen } from "../stores/modal";
-  import { currentScreen } from "../stores/screen";
+  import { currentScreen, history } from "../stores/screen";
   import { user } from "../stores/user";
   import { userArticles, userArticlesCount } from "../stores/articles";
   import { getOwnArticles } from "../util/user";
+  import { setScreenAndUpdateHistory } from "../util";
+  import { onMount } from "svelte";
 
   const handleLogout = async () => {
     localStorage.removeItem("user");
@@ -14,11 +16,21 @@
   };
 
   const handleClickView = async () => {
-    $currentScreen = "userArticles";
-    $whichModalIsOpen = null;
     const userArticlesResponse = await getOwnArticles($user.token);
     $userArticles = userArticlesResponse.articles;
     $userArticlesCount = userArticlesResponse.count;
+    let newHistory = setScreenAndUpdateHistory(
+      $currentScreen,
+      $history,
+      "/userArticles"
+    );
+    if (newHistory) {
+      $currentScreen = newHistory[0];
+      $history = newHistory[1];
+      window.history.pushState("", "", "/userArticles");
+    }
+    $whichModalIsOpen = null;
+    console.log($userArticles);
   };
 
   const handleClickCreate = () => {

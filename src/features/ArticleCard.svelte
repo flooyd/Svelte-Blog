@@ -1,19 +1,24 @@
 <script lang="ts">
   import { viewArticle } from "../stores/article";
 
-  import { currentScreen } from "../stores/screen";
-
-  import { getArticle } from "../util/articles";
-
+  import { currentScreen, history } from "../stores/screen";
+  import { setScreenAndUpdateHistory } from "../util";
   import type { article } from "../util/types";
   export let article: article;
 
   const { id, title } = article;
 
   const handleGet = async () => {
-    const articleFetched = await getArticle(id);
-    $viewArticle = articleFetched;
-    $currentScreen = "articleViewer";
+    let newHistory = setScreenAndUpdateHistory(
+      $currentScreen,
+      $history,
+      `/articles/${id}`
+    );
+    if (newHistory) {
+      $currentScreen = newHistory[0];
+      $history = newHistory[1];
+      window.history.pushState("", "", `/articles/${id}`);
+    }
   };
 </script>
 
