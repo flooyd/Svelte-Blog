@@ -18,7 +18,6 @@
   onMount(() => {
     let screenToNavigateTo = navigateOnLanding();
     if (screenToNavigateTo) {
-      console.log("hello");
       let newHistory = setScreenAndUpdateHistory(
         $currentScreen,
         $history,
@@ -30,6 +29,7 @@
         window.history.pushState("", "", screenToNavigateTo);
       }
     } else {
+      $history = ["/home"];
       window.history.pushState("", "", "/");
     }
   });

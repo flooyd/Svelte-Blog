@@ -7,7 +7,6 @@ export const setScreenAndUpdateHistory = (
   history,
   newScreen
 ) => {
-  console.log("hello");
   if (newScreen !== currentScreen) {
     return [newScreen, [...history, newScreen]];
   } else {

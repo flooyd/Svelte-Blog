@@ -16,12 +16,12 @@
     let newHistory = setScreenAndUpdateHistory(
       $currentScreen,
       $history,
-      "home"
+      "/home"
     );
     if (newHistory) {
       $currentScreen = newHistory[0];
       $history = newHistory[1];
-      window.history.pushState("", "", "/home");
+      window.history.pushState("", "", "/");
     }
   };
 </script>
