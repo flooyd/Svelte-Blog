@@ -1,7 +1,6 @@
 import { baseUrl } from ".";
 
 export const createArticle = async (token, body) => {
-  console.log(body);
   const response = await fetch(`${baseUrl}/articles`, {
     method: "POST",
     headers: {

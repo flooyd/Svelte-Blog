@@ -1,8 +1,6 @@
 <script>
   import Toolbar from "../components/Toolbar.svelte";
   import { viewArticle } from "../stores/article";
-
-  $: console.log($viewArticle);
 </script>
 
 <div>

@@ -36,7 +36,6 @@
   } else {
     containerWidthConstraint = true;
   }
-  $: console.log(containerWidthConstraint);
 </script>
 
 <main>
@@ -66,8 +65,6 @@
 </main>
 
 <style>
-  @import url("https://fonts.googleapis.com/css2?family=Amatic+SC&family=Josefin+Sans&display=swap");
-
   :global(body) {
     font-family: "Josefin Sans", Arial, Helvetica, sans-serif;
     background-color: whitesmoke;

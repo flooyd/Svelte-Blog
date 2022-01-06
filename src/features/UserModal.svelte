@@ -14,7 +14,6 @@
   };
 
   const handleClickView = async () => {
-    console.log("hi");
     $currentScreen = "userArticles";
     $whichModalIsOpen = null;
     const userArticlesResponse = await getOwnArticles($user.token);
